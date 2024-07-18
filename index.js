@@ -7,7 +7,7 @@ const User = require('./models/user')
 const run = require('./api/ai')
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://flames-proj-website-ecom.onrender.com',
     credentials: true
 }))
 
@@ -103,7 +103,7 @@ app.post('/api/genai', async (req, res) => {
 
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/asdfghjkl')
+mongoose.connect('mongodb+srv://sudharshan10:cvy9DTon49EeEbss@user-cred.mbhvlk1.mongodb.net/?retryWrites=true&w=majority&appName=user-cred')
         .then(() => {
             console.log('db connected')
         })
