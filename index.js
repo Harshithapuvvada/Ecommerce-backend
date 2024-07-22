@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const bcrypt = require('bcrypt');
 const User = require('./models/user'); // Ensure this is the correct path
 const run = require('./api/ai');
 const app = express();
@@ -28,8 +27,7 @@ app.post('/register', async (req, res) => {
             return res.status(405).json({ message: "User already exists" });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User({ name, email, password: hashedPassword });
+        const user = new User({ name, email, password });
         await user.save();
 
         return res.status(201).json({ message: "User created" });
@@ -52,8 +50,7 @@ app.post('/login', async (req, res) => {
             return res.status(404).json({ message: "User does not exist" });
         }
 
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
+        if (password !== user.password) {
             return res.status(409).json({ message: "Incorrect password" });
         }
 
