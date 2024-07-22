@@ -72,7 +72,7 @@ app.post('/api/genai', async (req, res) => {
     }
 });
 
-mongoose.connect('your-mongodb-connection-string')
+mongoose.connect('mongodb+srv://sudharshanreddydev:qoQHwe1Zd6hRyVzF@user-cred.igny5kr.mongodb.net/?retryWrites=true&w=majority&appName=user-cred')
     .then(() => console.log('db connected'))
     .catch((err) => console.log(err));
 
